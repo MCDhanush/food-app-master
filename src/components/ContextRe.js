@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { toast } from "react-toastify";
 
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
@@ -22,7 +23,7 @@ const reducer = (state, action) => {
       newArr.splice(action.index, 1);
       return newArr;
     case "UPDATE":
-      let arr = { ...state };
+      let arr = [...state];
       arr.find((food, index) => {
         if (food.id === action.id) {
           console.log(
@@ -35,8 +36,16 @@ const reducer = (state, action) => {
             qty: parseInt(action.qty) + food.qty,
             price: action.price + food.price,
           };
+        } else {
+          alert("only once you add on variant");
         }
+        return arr;
       });
+      return arr;
+    case "DROP":
+      let empArray = [];
+      const y = toast("f");
+      return empArray;
     default:
       console.log("Error in Reducer");
   }

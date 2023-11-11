@@ -31,6 +31,7 @@ export default function Login() {
     if (!json.success) {
       alert("Enter valid credantials");
     } else {
+      localStorage.setItem("userEmail", credential.email);
       localStorage.setItem("authToken", json.authToken);
       alert("login succesfully");
       navigate("/");
@@ -46,8 +47,9 @@ export default function Login() {
   };
   return (
     <>
-      <div className="container">
+      <div className="container lbad-4">
         <form onSubmit={handleSubmit}>
+          <div className="header-ver"> LOGIN </div>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
@@ -84,6 +86,9 @@ export default function Login() {
           </button>
           <Link to="/signup" className="m-3 btn btn-danger">
             For New User
+          </Link>
+          <Link to="/" className="m-0 btn btn-secondary">
+            back
           </Link>
         </form>
       </div>

@@ -16,11 +16,25 @@ code {
   max-height: 600px;
   object-fit: contain !important;
 }
+.lbad-4 {
+  /* margin: 0; */
+  padding: 150px 0 0 0;
+  max-width: 450px;
+}
+.header-ver {
+  font-size: 25px;
+  color: aquamarine;
+}
 
 @media (max-width: 650px) {
   .card-pad {
-    padding-left: 25px;
+    padding-left: 30px;
     max-width: 300px !important;
     /* justify-content: center; */
+  }
+  .lbad-4 {
+    /* margin: 0; */
+    padding: 80px 0 0 0;
+    max-width: 280px;
   }
 }

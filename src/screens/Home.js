@@ -138,7 +138,7 @@ export default function Home() {
                         return (
                           <div
                             key={filterItems.id}
-                            className="col-12 col-md-6 col-lg-3"
+                            className="col-12 col-md-6 col-lg-3 card-pad"
                           >
                             {/* {console.log(filterItems.url)} */}
                             <Card

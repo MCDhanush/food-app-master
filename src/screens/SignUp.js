@@ -56,8 +56,10 @@ export default function SignUp() {
   return (
     <>
       {/* this form is from bootstrap  */}
-      <div className="container">
+      <div className="container lbad-4">
         <form onSubmit={handleSubmit}>
+          <div className="header-ver "> SignUp</div>
+          {/* <br /> */}
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name

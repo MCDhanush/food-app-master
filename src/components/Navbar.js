@@ -1,18 +1,20 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Badge } from "react-bootstrap";
+import { Badge, Toast } from "react-bootstrap";
 import Modal from "../Modal";
 import Cart from "../screens/Cart";
 import { useCart } from "./ContextRe";
+// import { toast } from "react-toastify";
 
 export default function Navbar(props) {
   const [cartView, setCartView] = useState(false);
-  const [close, setClose] = useState();
+  const [close, setClose] = useState(false);
   const navigate = useNavigate();
   let data = useCart();
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    navigate("/login");
+    alert("succesfully logout");
+    navigate("/");
   };
   return (
     <div>
@@ -21,8 +23,9 @@ export default function Navbar(props) {
           <Link className="navbar-brand fs-1 fst-italic" to="/">
             Foodic
           </Link>
+
           <button
-            className="navbar-toggler"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -31,10 +34,11 @@ export default function Navbar(props) {
             aria-label="Toggle navigation"
           >
             <span
-              className="navbar-toggler-icon"
-              onClick={() => setClose(!close)}
+              class="navbar-toggler-icon"
+              onClick={() => setClose(true)}
             ></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
@@ -48,20 +52,6 @@ export default function Navbar(props) {
               </li>
               {/* we create local storage for my orders with help of auth that's 
               only we known which customer order the products  */}
-              {localStorage.getItem("authToken") ? (
-                <li className="nav-item">
-                  <Link
-                    className="nav-link fs-5 mx-3 active"
-                    aria-current="page"
-                    to="/myorder"
-                  >
-                    My Orders
-                  </Link>{" "}
-                  {/* index.css - nav-link color white */}
-                </li>
-              ) : (
-                ""
-              )}
             </ul>
             {!localStorage.getItem("authToken") ? (
               <div className="d-flex">

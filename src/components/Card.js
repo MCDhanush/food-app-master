@@ -31,7 +31,6 @@ export default function Card(props) {
     for (const item of data) {
       if (item.id === props.foodItems._id) {
         food = item;
-
         break;
       }
     }
@@ -84,7 +83,7 @@ export default function Card(props) {
     <div>
       <div>
         <div
-          className="card mt-3"
+          className="card mt-3 "
           style={{ width: "18rem", maxHeight: "360px" }}
         >
           <img

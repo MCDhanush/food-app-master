@@ -1,6 +1,9 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useCart, useDispatchCart } from "../components/ContextRe.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 export default function Cart() {
   let data = useCart();
@@ -19,8 +22,7 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("https://bd-f.onrender.com/api/auth/orderData", {
+    let response = await fetch("https://bd-f.onrender.com/api/orderData", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: "POST",
@@ -39,9 +41,20 @@ export default function Cart() {
     }
   };
 
+  const handleClear = () => {
+    if (toast("Your order is created")) {
+      console.log("d");
+      dispatch({ type: "DROP" });
+      alert("Your order is now received");
+    } else if (dispatch({ type: "DROP" })) {
+      console.log("clear");
+    }
+  };
+
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
     <div>
+      <ToastContainer />
       {/* {console.log(data)} */}
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover ">
@@ -80,9 +93,13 @@ export default function Cart() {
           <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
         </div>
         <div>
-          <button className="btn bg-success mt-5 " onClick={handleCheckOut}>
+          <button
+            className="btn bg-success mt-5 "
+            // onClick={toastHan}
+            onClick={handleClear}
+          >
             {" "}
-            Check Out{" "}
+            Check Out <ShoppingCartCheckoutIcon />
           </button>
         </div>
       </div>
