@@ -11,7 +11,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:9000/api/foodData", {
+    let response = await fetch("https://bd-f.onrender.com/api/foodData", {
       method: "GET",
     });
     response = await response.json();

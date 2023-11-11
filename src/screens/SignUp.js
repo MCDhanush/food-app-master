@@ -20,7 +20,7 @@ export default function SignUp() {
         location: credential.geoloaction,
       })
     );
-    const response = await fetch("http://localhost:9000/api/createuser", {
+    const response = await fetch("https://bd-f.onrender.com/api/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

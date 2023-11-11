@@ -16,7 +16,7 @@ export default function Login() {
         password: credential.password,
       })
     );
-    const response = await fetch("http://localhost:9000/api/loginuser", {
+    const response = await fetch("https://bd-f.onrender.com/api/loginuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
