@@ -9,6 +9,9 @@ import { useCart } from "./ContextRe";
 export default function Navbar(props) {
   const [cartView, setCartView] = useState(false);
   const [close, setClose] = useState(false);
+  const [navopen, setNavopen] = useState("");
+  // const [navclose, setClose] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   let data = useCart();
   const handleLogout = () => {
@@ -17,44 +20,22 @@ export default function Navbar(props) {
     navigate("/");
   };
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-        <div className="container-fluid">
-          <Link className="navbar-brand fs-1 fst-italic" to="/">
-            Foodic
+    <div className="nav-c">
+      <div className="nav-bac">
+        <nav>
+          <Link id="nav-na" aria-current="page" to="/">
+            Foddic
           </Link>
+          <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <br />
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span
-              class="navbar-toggler-icon"
-              onClick={() => setClose(true)}
-            ></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2">
-              <li className="nav-item">
-                <Link
-                  className="nav-link active fs-5"
-                  aria-current="page"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </li>
-              {/* we create local storage for my orders with help of auth that's 
-              only we known which customer order the products  */}
-            </ul>
+          <ul className={menuOpen ? "open" : ""} id="nav-g">
             {!localStorage.getItem("authToken") ? (
-              <div className="d-flex">
+              <div className="d-flex" id="nav-f">
                 <Link className="btn bg-white mx-1 text-success" to="/login">
                   Login
                 </Link>
@@ -90,9 +71,10 @@ export default function Navbar(props) {
                 </div>
               </div>
             )}
-          </div>
-        </div>
-      </nav>
+          </ul>
+          {/* <br /> */}
+        </nav>
+      </div>
     </div>
   );
 }
