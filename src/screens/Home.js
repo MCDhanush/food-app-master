@@ -23,7 +23,11 @@ export default function Home() {
   useEffect(() => {
     loadData();
   }, []);
-
+  const handleKeyDown = (e) => {
+    if (e.key === " ") {
+      e.preventDefault();
+    }
+  };
   return (
     <div>
       <div>
@@ -47,6 +51,8 @@ export default function Home() {
                   placeholder="Search"
                   aria-label="Search"
                   search="value"
+                  // onkeypress={return AvoidSpace(event)"
+                  onKeyDown={handleKeyDown}
                   onChange={(e) => setSearch(e.target.value)}
                 />
                 {/* <button

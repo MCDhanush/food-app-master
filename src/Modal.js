@@ -10,10 +10,11 @@ const MODAL_STYLES = {
   zIndex: 1000,
   height: "90%",
   width: "90%",
+  overflow: "scroll",
 };
 
 const OVERLAY_STYLES = {
-  position: "fixed",
+  // position: "fixed",
   top: 0,
   left: 0,
   right: 0,
@@ -28,8 +29,8 @@ export default function Modal({ children, onClose }) {
       <div className="container" style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <button
-          className="btn bg-danger fs-4"
-          style={{ marginLeft: "90%", marginTop: "-35px" }}
+          className="btn bg-danger fs-4 bottom-5 position-absolute cart-sis"
+          style={{ marginLeft: "95%", marginTop: "3px" }}
           onClick={onClose}
         >
           {" "}

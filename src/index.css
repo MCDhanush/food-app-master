@@ -25,7 +25,10 @@ code {
   font-size: 25px;
   color: aquamarine;
 }
-
+.nav-i {
+  display: flex;
+  /* justify-content: center; */
+}
 @media (max-width: 650px) {
   .card-pad {
     padding-left: 30px;
@@ -36,5 +39,14 @@ code {
     /* margin: 0; */
     padding: 80px 0 0 0;
     max-width: 280px;
+  }
+  .nav-i {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50px;
+  }
+  .cart-sis {
+    margin-left: 85% !important;
   }
 }

@@ -8,6 +8,7 @@ import { useCart } from "./ContextRe";
 
 export default function Navbar(props) {
   const [cartView, setCartView] = useState(false);
+  const [cartViews, setCartViews] = useState(false);
   const [close, setClose] = useState(false);
   const [navopen, setNavopen] = useState("");
   // const [navclose, setClose] = useState(false)
@@ -35,36 +36,62 @@ export default function Navbar(props) {
 
           <ul className={menuOpen ? "open" : ""} id="nav-g">
             {!localStorage.getItem("authToken") ? (
-              <div className="d-flex" id="nav-f">
-                <Link className="btn bg-white mx-1 text-success" to="/login">
+              <div className="d-flex nav-i" id="nav-f">
+                <Link
+                  className="btn bg-white mx-1 text-success m-2 nav-is"
+                  to="/login"
+                >
                   Login
                 </Link>
-                <Link className="btn bg-white mx-1 text-success " to="/signup">
+                <Link
+                  className="btn bg-white mx-1 text-success nav-is m-2"
+                  to="/signup"
+                >
                   SignUp
                 </Link>
               </div>
             ) : (
-              <div>
+              <div className="nav-i">
+                <Link
+                  className="btn bg-white text-primary mx-2 m-2 nav-is"
+                  to="/"
+                >
+                  Home
+                </Link>
                 <div
-                  className="btn bg-white text-success mx-2 "
+                  className="btn bg-white text-success mx-2 m-2 nav-is"
                   to="/cart"
                   onClick={() => {
                     setCartView(true);
                   }}
                 >
-                  My Cart{""}
+                  My Cart {""}
                   {""}
                   <Badge to="/cart" pill bg="danger">
                     {data.length}
                   </Badge>
                 </div>
+                {localStorage.getItem("authToken") ? (
+                  <div className="nav-item nav-is">
+                    <Link
+                      className="btn bg-white text-info mx-2 m-2 active"
+                      aria-current="page"
+                      to="/myorder"
+                    >
+                      My Orders
+                    </Link>{" "}
+                    {/* index.css - nav-link color white */}
+                  </div>
+                ) : (
+                  ""
+                )}
                 {cartView ? (
                   <Modal onClose={() => setCartView(false)}>
                     <Cart />
                   </Modal>
                 ) : null}
                 <div
-                  className="btn bg-white text-danger mx-2 "
+                  className="btn bg-white text-danger mx-2 m-2 nav-is "
                   onClick={handleLogout}
                 >
                   Logout

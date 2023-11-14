@@ -15,10 +15,10 @@ export default function Cart() {
       </div>
     );
   }
-  // const handleRemove = (index)=>{
-  //   console.log(index)
-  //   dispatch({type:"REMOVE",index:index})
-  // }
+  // const handleRemove = (index) => {
+  //   console.log(index);
+  //   dispatch({ type: "REMOVE", index: index });
+  // };
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
@@ -41,15 +41,15 @@ export default function Cart() {
     }
   };
 
-  const handleClear = () => {
-    if (toast("Your order is created")) {
-      console.log("d");
-      dispatch({ type: "DROP" });
-      alert("Your order is now received");
-    } else if (dispatch({ type: "DROP" })) {
-      console.log("clear");
-    }
-  };
+  // const handleClear = () => {
+  //   if (toast("Your order is created")) {
+  //     console.log("d");
+  //     dispatch({ type: "DROP" });
+  //     alert("Your order is now received");
+  //   } else if (dispatch({ type: "DROP" })) {
+  //     console.log("clear");
+  //   }
+  // };
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
@@ -96,7 +96,7 @@ export default function Cart() {
           <button
             className="btn bg-success mt-5 "
             // onClick={toastHan}
-            onClick={handleClear}
+            onClick={handleCheckOut}
           >
             {" "}
             Check Out <ShoppingCartCheckoutIcon />
