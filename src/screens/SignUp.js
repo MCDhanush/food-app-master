@@ -38,7 +38,7 @@ export default function SignUp() {
       alert("Enter valid credantials");
     } else {
       alert("User Created");
-      navigate("/loginuser");
+      navigate("/login");
     }
   };
 
